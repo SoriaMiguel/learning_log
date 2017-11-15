@@ -4,7 +4,7 @@ class Topic(models.Model):
     """A topic the user is learning about"""
     text = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         """Return a string representation of the model."""
         return self.text
@@ -20,6 +20,10 @@ class Entry(models.Model):
 
     def __str__(self):
         """Return a string representation of the model."""
-        return self.text[:50] + "..."
+        #My own logic
+        if len(self.text) > 50:
+            return self.text[:50] + "..."
+        else:
+            return self.text
 
 # Create your models here.
